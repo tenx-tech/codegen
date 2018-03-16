@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `Scope` struct in crate `codegen`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, Scope">
+
+    <title>codegen::Scope - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../normalize.css">
+    <link rel="stylesheet" type="text/css" href="../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../main.css">
+    
+
+    
+    
+</head>
+<body class="rustdoc struct">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        <div class="sidebar-menu">&#9776;</div>
+        
+        <p class='location'>Struct Scope</p><div class="sidebar-elems"><div class="block items"><a class="sidebar-title" href="#methods">Methods</a><div class="sidebar-links"><a href="#method.new">new</a><a href="#method.import">import</a><a href="#method.new_module">new_module</a><a href="#method.get_module_mut">get_module_mut</a><a href="#method.get_module">get_module</a><a href="#method.get_or_new_module">get_or_new_module</a><a href="#method.push_module">push_module</a><a href="#method.new_struct">new_struct</a><a href="#method.push_struct">push_struct</a><a href="#method.new_trait">new_trait</a><a href="#method.push_trait">push_trait</a><a href="#method.new_enum">new_enum</a><a href="#method.push_enum">push_enum</a><a href="#method.new_impl">new_impl</a><a href="#method.push_impl">push_impl</a><a href="#method.raw">raw</a><a href="#method.to_string">to_string</a><a href="#method.fmt">fmt</a></div><a class="sidebar-title" href="#implementations">Trait Implementations</a><div class="sidebar-links"><a href="#impl-Debug">Debug</a><a href="#impl-Clone">Clone</a></div></div><p class='location'><a href='index.html'>codegen</a></p><script>window.sidebarCurrent = {name: 'Scope', ty: 'struct', relpath: ''};</script><script defer src="sidebar-items.js"></script></div>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content">
+<h1 class='fqn'><span class='in-band'>Struct <a href='index.html'>codegen</a>::<wbr><a class="struct" href=''>Scope</a></span><span class='out-of-band'><span id='render-detail'>
+                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                       [<span class='inner'>&#x2212;</span>]
+                   </a>
+               </span><a class='srclink' href='../src/codegen/lib.rs.html#35-44' title='goto source code'>[src]</a></span></h1>
+<pre class='rust struct'>pub struct Scope { /* fields omitted */ }</pre><div class='docblock'><p>Defines a scope.</p>
+
+<p>A scope contains modules, types, etc...</p>
+</div>
+                    <h2 id='methods' class='small-section-header'>
+                      Methods<a href='#methods' class='anchor'></a>
+                    </h2>
+                <h3 id='impl' class='impl'><span class='in-band'><code>impl <a class="struct" href="../codegen/struct.Scope.html" title="struct codegen::Scope">Scope</a></code><a href='#impl' class='anchor'></a></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/codegen/lib.rs.html#244-511' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.new' class="method"><span id='new.v' class='invisible'><code>pub fn <a href='#method.new' class='fnname'>new</a>() -&gt; Self</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/codegen/lib.rs.html#246-252' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Returns a new scope</p>
+</div><h4 id='method.import' class="method"><span id='import.v' class='invisible'><code>pub fn <a href='#method.import' class='fnname'>import</a>(&amp;mut self, path: &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>, ty: &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>) -&gt; &amp;mut <a class="struct" href="../codegen/struct.Import.html" title="struct codegen::Import">Import</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/codegen/lib.rs.html#258-266' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Import a type into the scope.</p>
+
+<p>This results in a new <code>use</code> statement being added to the beginning of
+the scope.</p>
+</div><h4 id='method.new_module' class="method"><span id='new_module.v' class='invisible'><code>pub fn <a href='#method.new_module' class='fnname'>new_module</a>(&amp;mut self, name: &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>) -&gt; &amp;mut <a class="struct" href="../codegen/struct.Module.html" title="struct codegen::Module">Module</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/codegen/lib.rs.html#280-287' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Push a new module definition, returning a mutable reference to it.</p>
+
+<h1 id='panics' class='section-header'><a href='#panics'>Panics</a></h1>
+<p>Since a module&#39;s name must uniquely identify it within the scope in
+which it is defined, pushing a module whose name is already defined
+in this scope will cause this function to panic.</p>
+
+<p>In many cases, the <a href="#method.get_or_new_module"><code>get_or_new_module</code></a> function is preferrable, as it
+will return the existing definition instead.</p>
+</div><h4 id='method.get_module_mut' class="method"><span id='get_module_mut.v' class='invisible'><code>pub fn <a href='#method.get_module_mut' class='fnname'>get_module_mut</a>&lt;Q:&nbsp;?<a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Sized.html" title="trait core::marker::Sized">Sized</a>&gt;(&amp;mut self, name: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.reference.html">&amp;</a>Q) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;&amp;mut <a class="struct" href="../codegen/struct.Module.html" title="struct codegen::Module">Module</a>&gt; <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;<a class="struct" href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html" title="struct alloc::string::String">String</a>: <a class="trait" href="https://doc.rust-lang.org/nightly/core/cmp/trait.PartialEq.html" title="trait core::cmp::PartialEq">PartialEq</a>&lt;Q&gt;,&nbsp;</span></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/codegen/lib.rs.html#290-303' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Returns a mutable reference to a module if it is exists in this scope.</p>
+</div><h4 id='method.get_module' class="method"><span id='get_module.v' class='invisible'><code>pub fn <a href='#method.get_module' class='fnname'>get_module</a>&lt;Q:&nbsp;?<a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Sized.html" title="trait core::marker::Sized">Sized</a>&gt;(&amp;self, name: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.reference.html">&amp;</a>Q) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;&amp;<a class="struct" href="../codegen/struct.Module.html" title="struct codegen::Module">Module</a>&gt; <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;<a class="struct" href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html" title="struct alloc::string::String">String</a>: <a class="trait" href="https://doc.rust-lang.org/nightly/core/cmp/trait.PartialEq.html" title="trait core::cmp::PartialEq">PartialEq</a>&lt;Q&gt;,&nbsp;</span></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/codegen/lib.rs.html#306-317' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Returns a mutable reference to a module if it is exists in this scope.</p>
+</div><h4 id='method.get_or_new_module' class="method"><span id='get_or_new_module.v' class='invisible'><code>pub fn <a href='#method.get_or_new_module' class='fnname'>get_or_new_module</a>(&amp;mut self, name: &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>) -&gt; &amp;mut <a class="struct" href="../codegen/struct.Module.html" title="struct codegen::Module">Module</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/codegen/lib.rs.html#321-327' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Returns a mutable reference to a module, creating it if it does
+not exist.</p>
+</div><h4 id='method.push_module' class="method"><span id='push_module.v' class='invisible'><code>pub fn <a href='#method.push_module' class='fnname'>push_module</a>(&amp;mut self, item: <a class="struct" href="../codegen/struct.Module.html" title="struct codegen::Module">Module</a>) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.reference.html">&amp;mut </a>Self</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/codegen/lib.rs.html#341-345' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Push a module definition.</p>
+
+<h1 id='panics-1' class='section-header'><a href='#panics-1'>Panics</a></h1>
+<p>Since a module&#39;s name must uniquely identify it within the scope in
+which it is defined, pushing a module whose name is already defined
+in this scope will cause this function to panic.</p>
+
+<p>In many cases, the <a href="#method.get_or_new_module"><code>get_or_new_module</code></a> function is preferrable, as it will
+return the existing definition instead.</p>
+</div><h4 id='method.new_struct' class="method"><span id='new_struct.v' class='invisible'><code>pub fn <a href='#method.new_struct' class='fnname'>new_struct</a>(&amp;mut self, name: &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>) -&gt; &amp;mut <a class="struct" href="../codegen/struct.Struct.html" title="struct codegen::Struct">Struct</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/codegen/lib.rs.html#348-355' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Push a new struct definition, returning a mutable reference to it.</p>
+</div><h4 id='method.push_struct' class="method"><span id='push_struct.v' class='invisible'><code>pub fn <a href='#method.push_struct' class='fnname'>push_struct</a>(&amp;mut self, item: <a class="struct" href="../codegen/struct.Struct.html" title="struct codegen::Struct">Struct</a>) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.reference.html">&amp;mut </a>Self</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/codegen/lib.rs.html#358-361' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Push a struct definition</p>
+</div><h4 id='method.new_trait' class="method"><span id='new_trait.v' class='invisible'><code>pub fn <a href='#method.new_trait' class='fnname'>new_trait</a>(&amp;mut self, name: &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>) -&gt; &amp;mut <a class="struct" href="../codegen/struct.Trait.html" title="struct codegen::Trait">Trait</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/codegen/lib.rs.html#364-371' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Push a new trait definition, returning a mutable reference to it.</p>
+</div><h4 id='method.push_trait' class="method"><span id='push_trait.v' class='invisible'><code>pub fn <a href='#method.push_trait' class='fnname'>push_trait</a>(&amp;mut self, item: <a class="struct" href="../codegen/struct.Trait.html" title="struct codegen::Trait">Trait</a>) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.reference.html">&amp;mut </a>Self</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/codegen/lib.rs.html#374-377' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Push a trait definition</p>
+</div><h4 id='method.new_enum' class="method"><span id='new_enum.v' class='invisible'><code>pub fn <a href='#method.new_enum' class='fnname'>new_enum</a>(&amp;mut self, name: &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>) -&gt; &amp;mut <a class="struct" href="../codegen/struct.Enum.html" title="struct codegen::Enum">Enum</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/codegen/lib.rs.html#380-387' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Push a new struct definition, returning a mutable reference to it.</p>
+</div><h4 id='method.push_enum' class="method"><span id='push_enum.v' class='invisible'><code>pub fn <a href='#method.push_enum' class='fnname'>push_enum</a>(&amp;mut self, item: <a class="struct" href="../codegen/struct.Enum.html" title="struct codegen::Enum">Enum</a>) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.reference.html">&amp;mut </a>Self</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/codegen/lib.rs.html#390-393' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Push a structure definition</p>
+</div><h4 id='method.new_impl' class="method"><span id='new_impl.v' class='invisible'><code>pub fn <a href='#method.new_impl' class='fnname'>new_impl</a>(&amp;mut self, target: &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>) -&gt; &amp;mut <a class="struct" href="../codegen/struct.Impl.html" title="struct codegen::Impl">Impl</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/codegen/lib.rs.html#396-403' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Push a new <code>impl</code> block, returning a mutable reference to it.</p>
+</div><h4 id='method.push_impl' class="method"><span id='push_impl.v' class='invisible'><code>pub fn <a href='#method.push_impl' class='fnname'>push_impl</a>(&amp;mut self, item: <a class="struct" href="../codegen/struct.Impl.html" title="struct codegen::Impl">Impl</a>) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.reference.html">&amp;mut </a>Self</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/codegen/lib.rs.html#406-409' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Push an <code>impl</code> block.</p>
+</div><h4 id='method.raw' class="method"><span id='raw.v' class='invisible'><code>pub fn <a href='#method.raw' class='fnname'>raw</a>(&amp;mut self, val: &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.reference.html">&amp;mut </a>Self</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/codegen/lib.rs.html#414-417' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Push a raw string to the scope.</p>
+
+<p>This string will be included verbatim in the formatted string.</p>
+</div><h4 id='method.to_string' class="method"><span id='to_string.v' class='invisible'><code>pub fn <a href='#method.to_string' class='fnname'>to_string</a>(&amp;self) -&gt; <a class="struct" href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html" title="struct alloc::string::String">String</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/codegen/lib.rs.html#420-431' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Return a string representation of the scope.</p>
+</div><h4 id='method.fmt' class="method"><span id='fmt.v' class='invisible'><code>pub fn <a href='#method.fmt' class='fnname'>fmt</a>(&amp;self, fmt: &amp;mut <a class="struct" href="../codegen/struct.Formatter.html" title="struct codegen::Formatter">Formatter</a>) -&gt; <a class="type" href="https://doc.rust-lang.org/nightly/core/fmt/type.Result.html" title="type core::fmt::Result">Result</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/codegen/lib.rs.html#434-459' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Formats the scope using the given formatter.</p>
+</div></div>
+            <h2 id='implementations' class='small-section-header'>
+              Trait Implementations<a href='#implementations' class='anchor'></a>
+            </h2>
+        <h3 id='impl-Debug' class='impl'><span class='in-band'><code>impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html" title="trait core::fmt::Debug">Debug</a> for <a class="struct" href="../codegen/struct.Scope.html" title="struct codegen::Scope">Scope</a></code><a href='#impl-Debug' class='anchor'></a></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/codegen/lib.rs.html#34' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.fmt-1' class="method"><span id='fmt.v-1' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html#tymethod.fmt' class='fnname'>fmt</a>(&amp;self, __arg_0: &amp;mut <a class="struct" href="https://doc.rust-lang.org/nightly/core/fmt/struct.Formatter.html" title="struct core::fmt::Formatter">Formatter</a>) -&gt; <a class="type" href="https://doc.rust-lang.org/nightly/core/fmt/type.Result.html" title="type core::fmt::Result">Result</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/codegen/lib.rs.html#34' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Formats the value using the given formatter. <a href="https://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html#tymethod.fmt">Read more</a></p>
+</div></div><h3 id='impl-Clone' class='impl'><span class='in-band'><code>impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html" title="trait core::clone::Clone">Clone</a> for <a class="struct" href="../codegen/struct.Scope.html" title="struct codegen::Scope">Scope</a></code><a href='#impl-Clone' class='anchor'></a></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/codegen/lib.rs.html#34' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.clone' class="method"><span id='clone.v' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone' class='fnname'>clone</a>(&amp;self) -&gt; <a class="struct" href="../codegen/struct.Scope.html" title="struct codegen::Scope">Scope</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/codegen/lib.rs.html#34' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Returns a copy of the value. <a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone">Read more</a></p>
+</div><h4 id='method.clone_from' class="method"><span id='clone_from.v' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#method.clone_from' class='fnname'>clone_from</a>(&amp;mut self, source: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.reference.html">&amp;</a>Self)</code></span><span class='out-of-band'><div class='ghost'></div><div class='since' title='Stable since Rust version 1.0.0'>1.0.0</div><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/clone.rs.html#112-114' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Performs copy-assignment from <code>source</code>. <a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#method.clone_from">Read more</a></p>
+</div></div></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>↑</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>↓</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>↹</dt>
+                    <dd>Switch tab</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                    <dt style="width:31px;">+ / -</dt>
+                    <dd>Collapse/expand all sections</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../";
+        window.currentCrate = "codegen";
+    </script>
+    <script src="../main.js"></script>
+    <script defer src="../search-index.js"></script>
+</body>
+</html>
